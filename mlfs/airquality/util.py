@@ -65,7 +65,7 @@ def get_historical_weather(city, start_date,  end_date, latitude, longitude):
     daily_dataframe['city'] = city
     return daily_dataframe
 
-def get_hourly_weather_forecast(city, latitude, longitude):
+def get_hourly_weather_forecast(city, latitude, longitude, days=7):
 
     # latitude, longitude = get_city_coordinates(city)
 
@@ -80,6 +80,7 @@ def get_hourly_weather_forecast(city, latitude, longitude):
     params = {
         "latitude": latitude,
         "longitude": longitude,
+        "forecast_days": days,
         "hourly": ["temperature_2m", "precipitation", "wind_speed_10m", "wind_direction_10m"]
     }
     responses = openmeteo.weather_api(url, params=params)
